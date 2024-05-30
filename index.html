@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <h1><i class='bx bx-qr'></i> QR Code Generator</h1>
+    <div class="container">
+        <p>Enter your text or url</p>
+        <input type="text" placeholder="Text or url" name="" id="qrText">
+
+        <div id="imgBox">
+            <img src="" id="qrImage">
+        </div>
+
+        <button onclick="generateQR();">Generate QR Code</button>
+    </div>
+
+
+    <footer class="footer">
+        <p>Copyright © 2024 . All rights reserved | Designed By <a href="https://usmansaeed.vercel.app">Usman Saeed</a></p>
+    </footer>
+
+
+
+    <script>
+
+        let imgBox = document.getElementById("imgBox");
+        let qrImage = document.getElementById("qrImage");
+        let qrText = document.getElementById("qrText");
+
+        function generateQR() {
+            if (qrText.value.length > 0){
+                qrImage.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrText.value;
+                imgBox.classList.add("show-img");
+            } else{
+                qrText.classList.add('error');
+                setTimeout(()=>{
+                    qrText.classList.remove('error');
+                },1000);
+            }
+            
+
+
+        }
+    </script>
+
+
+</body>
+</html>
